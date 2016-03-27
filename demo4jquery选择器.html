@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jquery选择器demo</title>
+        <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="js/jquery-1.12.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="one" id="one">
+            id:one, class:one
+            <div class="mini">class为mini</div>
+        </div>
+        <div class="one" id="two" title="test">
+            id:two, class:one,title:test的div
+            <div class="mini" title="other">class为mini，title为other</div>
+            <div class="mini" title="test">class为mini, title为test</div>
+        </div>
+        <div class="one">
+            <div class="mini">class:mini</div>
+            <div class="mini">class:mini</div>
+            <div class="mini">class:mini</div>
+            <div class="mini"></div>
+        </div>
+        <div class="one">
+            <div class="mini">class:mini</div>
+            <div class="mini">class:mini</div>
+            <div class="mini">class:mini</div>
+            <div class="mini" title="test">class:mini,title:test</div>
+        </div>
+        <div style="display:none;" class="none">
+            style的display为none的div
+        </div>
+        <div class="hide">class为hide的div</div>
+        <div>
+            包含input的type为hidden的div
+            <input type="hidden" size="8">
+        </div>
+        <span id="mover">正在执行动画的span元素</span>
+        <h1>h1</h1>
+        <br>
+        <h2>h2</h2>
+        <br>
+        <h3>h3</h3>
+        <br>
+        <!-- jquery基本选择器的例子，后面的会覆盖前面的 -->
+        <!-- <script>
+             /* 改变id为one的元素的背景色,字体颜色 */
+             $("#one").css("background","red");
+             $("#one").css("color","yellow");
+             /* 改变class为mini的所有元素的背景色 */
+             $(".mini").css("background","#bbffaa");
+             $(".mini").css("color","red");
+             /* 改变所有div标签的背景色 */
+             $("div").css("backgroundColor","gray");
+             /* 改变所有元素的背景色 */
+             $("*").css("backgroundColor","#bbffaa");
+             /* 改变span标签和id为two的元素的背景色 */
+             $("span,#two").css("backgroundColor","red");
+             </script> -->
+        <!-- 下面是层次选择器的例子 -->
+        <!-- <script>
+             /* 选择body中所有的div，改变背景色 */
+             $("body div").css("backgroundColor","#bbffaa");
+             /* 只选择body下的div，不包括div下的div，改变背景色 */
+             $("body>div").css("backgroundColor","red");
+             /* 改变class为one的后面第一个div元素 */
+             $(".one+div").css("backgroundColor","yellow");
+             $(".one~div").css("backgroundColor","gray");
+             </script> -->
+        <!-- 下面是过滤选择器的例子 -->
+        <!-- <script>
+             /*          选取所有class为mini的元素中的第一个 */
+             $(".mini:first").css("color","yellow");
+             /* 最后一个 */
+             $(".mini:last").css("color","yellow");
+             /* 选取所有class不是mini的div元素 */
+             $("div:not(.mini)").css("color","red");
+             /* 选取所有序号是偶数(从上到下开始数，从0开始)的div元素 */
+             $("div:even").css("background","white");
+             /* 奇数 */
+             $("div:odd").css("background","black");
+             /* 序号等于:eq() 大于:gt() 小于:lt()*/
+             $("div:eq(0)").css("border","2px solid red");
+             $("div:gt(0)").css("border","0.5px solid black");
+             /* 选择所有的标题元素,h1,h2,h3... */
+             $(":header").css("color","blue");
+             /* 正在执行动画的元素 ,没试出来*/
+             $(":animated").css("color","red");
+
+             </script>-->
+        <!-- 下面是内容过滤选择器的例子 -->
+        <!-- <script>
+             /* 选择含有文本'动画'的span元素 */
+             $("span:contains('动画')").css("color","red");
+             /* 选择不包含元素或者文本的空div元素 */
+             $("div:empty").css("border","2px solid red");
+             /* 选择含有选择器所匹配的元素的元素 */
+             $("div:has(input)").css("color","#bbffaa");
+             /* 选择所有含有input元素的元素，整个dom树从祖先到父亲。。。，但是不包括input本身 */
+             $(":has(input)").css("backgroundColor","red");
+             /* 选择所有拥有子元素的元素 */
+             $(":parent").css("color","yellow");
+             /* 选择div元素中拥有子元素的元素 */
+             $("div:parent").css("color","black");
+             </script> -->
+        <!--下面是可见性过滤选择器 -->
+        <!-- <script>
+             $("div:visible").css("background","#ff6500");
+             $(":hidden").show(900).css("backgroundColor","yellow");
+             </script> -->
+        <div title="en">title为en的div元素</div>
+        <div title="en-UK">title为en-UK的div元素</div>
+        <div title="english">title为english的div元素</div>
+        <div title="en uk">title为en uk的div元素</div>
+        <div title="uken">title为uken的div元素</div>
+        <!-- 属性过滤选择器 -->
+        <!-- <script>
+             $("div[title]").css("backgroundColor","#bbffaa");
+             $("div[title=test]").css("backgroundColor","green");
+             $("div[title!=other]").css("color","yellow");/* 没有title属性的也会被选中 */
+             $("div[title^=test]").css("color","red");
+             $("div[title$=er]").css("color","black");
+             $("div[title*=t]").css("backgroundColor","yellow");
+             </script>
+           -->
+        <script>
+         $("div[title|=en]").css("color","yellow");/*title属性以en开头后面跟‘-’的div，注意，只有en的div也会被选取到*/
+         $("div[title~=en]").css("color","red");/*title属性以空格分隔的值中包含en的div'，注意，只有en的div也会被选取到*/
+        </script>
+    </body>
+</html>

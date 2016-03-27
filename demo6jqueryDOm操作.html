@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jqueryDom操作例子</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="js/jquery-1.12.1.js"></script>
+    </head>
+    <body>
+        <p title="选择你喜欢的水果">你喜欢的水果?</p>
+        <p title="提示">提示</p>
+        <ul>
+            <li title="苹果">苹果</li>
+            <li title="橘子">橘子<i>haha</i></li>
+            <li title="菠萝">菠萝</li>
+        </ul>
+        <script>
+         var $li = $("ul li:nth-child(2)");//查找ul下第二个li元素
+         //var $li = $("ul li:eq(1)");     //与上面代码效果相同
+         var $title = $li.attr("title");
+         /* alert($title); */
+        </script>
+        <!-- <script>
+             var $li_new1 = $("<li title='asdf'>又一个列表</li>");
+             var $li_new2 = $("<p>张恒</p>")
+             $("ul").append($li_new1);//append()将新节点添加到元素内部
+             $($li_new2).appendTo($("ul"));
+             $("body p:first").prepend("<i>您好,</i>");
+             $("ul").before("<p title='在ul标签之前插入的p'>在ul标签之前插入的p</p>");
+             $("ul").prepend("<p title='在ul标签内部最前面插入的p'>在ul内部最前面插入的p</p>");
+             </script> -->
+        <!-- <script>
+             $("ul li:eq(0)").remove().appendTo($("ul"));//将第一个元素删除，之后又将其放在ul最后
+             //$("ul li").remove("li[title!=菠萝]");
+             $("ul").click(function(){
+             alert("ul绑定事件");
+             })
+             //$("ul").remove().insertAfter($("body p:first"));//remove()之后再添加，绑定的事件、附加的数据没有了
+             //detach方法
+             $("ul").detach().insertAfter($("body p:first"));//detach()之后再添加，绑定的事件还在。
+             //empty方法，清空节点内容
+             $("ul li:first").empty();
+             </script> -->
+        <!-- <script>
+             $("ul li").click(function(){
+             // alert("li绑定事件，并将所点击的对象放到ul最后面");
+             $(this).detach().appendTo($("ul"));
+             });
+             $("ul li").click(function(){
+             // clone复制一个新的节点，并将其添加到ul最后，true参数表示绑定事件不变，默认表示绑定事件没有了
+             $(this).clone(true).appendTo($("ul"));
+             });
+             $("p:first").replaceWith("<strong>你最不喜欢的苹果是?</strong>");
+             </script> -->
+        <!-- <script>
+             $("p:eq(0)").wrap("<b></b>");
+             $("p:eq(1)").wrapInner("<b></b>");
+             $("p").wrapAll("<i></i>");
+             </script> -->
+    </body>
+</html>

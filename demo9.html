@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>锋利的jquerydemo9DOM操作</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="js/jquery-1.12.1.js"></script>
+    <style>
+     /*      获取样式和设置样式 所需的 */
+     .high{
+         font-weight:bold; /*粗体字*/
+         color:red;
+     }
+     /*      追加样式 所需的 */
+     .another{
+         font-style:italic;/* 斜体 */
+         color:blue;
+     }
+    </style>
+  </head>
+  <body>
+      <input type="button" name="button1" value="输出class类" onclick="alert($('strong:eq(0)').attr('class'));"/>
+      <input type="button" name="button2" value="设置class类" onclick="$('strong:eq(1)').attr('class','high another');"/>
+      <input type="button" name="button3" value="追加class类" onclick="$('strong:eq(2)').addClass('another');"/>
+      <input type="button" name="button4" value="删除全部class类" onclick="$('strong:eq(3)').removeClass();"/>
+      <input type="button" name="button5" value="删除指定class类" onclick="$('strong:eq(4)').removeClass('high');"/>
+      <input type="button" name="button6" value="重复切换class类" onclick="$('strong:eq(5)').toggleClass('another');"/>
+      <br/>
+      <strong class="high" title="选择你最喜欢的水果。">你最喜欢的水果是？</strong>
+      <strong class="high" title="选择你最喜欢的水果。">你最喜欢的水果是？</strong>
+      <strong class="high" title="选择你最喜欢的水果。">你最喜欢的水果是？</strong>
+      <strong class="high" title="选择你最喜欢的水果。">你最喜欢的水果是？</strong>
+      <strong class="high" title="选择你最喜欢的水果。">你最喜欢的水果是？</strong>
+      <strong class="high" title="选择你最喜欢的水果。">你最喜欢的水果是？</strong>
+      <ul>
+          <li title="苹果">苹果</li>
+          <li title="橘子">橘子</li>
+          <li title="菠萝">菠萝</li>
+      </ul>
+      <strong class="high" title="选择你最喜欢的水果。"><pre>你最喜欢的水果是？</pre></strong>
+      <hr>
+      <h5>val()方法</h5>
+      <select id="single">
+          <option>选择1号</option>
+          <option>选择2号</option>
+          <option>选择3号</option>
+      </select>
+      <select id="multiple" multiple="multiple" style="height:120px">
+          <option selected="selected">选择1号</option>
+          <option>选择2号</option>
+          <option>选择3号</option>
+          <option>选择4号</option>
+          <option selected="selected">选择5号</option>
+      </select>
+      <input type="checkbox" value="check1">多选1
+      <input type="checkbox" value="check2">多选2
+      <input type="checkbox" value="check3">多选3
+      <input type="checkbox" value="check4">多选4
+      <input type="radio" value="radio1">单选1
+      <input type="radio" value="radio2">单选2
+      <input type="radio" value="radio3">单选3
+      <script>
+       //val方法
+       $("#single").val("选择2号");  /* 此方法会选中2号 */
+       $("#multiple").val(["选择2号","选择4号"]);/* 多选 */
+
+      </script>
+      <!-- 
+           //替换节点
+           /*        $("<p>你最喜欢的水果是？</p>").replaceAll("strong"); */
+           /*        $("p").replaceWith("<b>zhangheng喜欢什么水果？</b>"); */
+           //包裹节点
+           $("strong").wrap("<b>");
+           //这个会自动将所有的strong放到一个div中,即会将第三个包裹在<b></b>中的strong移动到前两个的后面
+           //，然后再将三个strong包裹，原来最后的strong位置只留下一个空的<b></b>，中间的ul会在div后面
+           $("strong").wrapAll("<div>");
+           $("strong").wrapAll("<i></i>");
+           //下面的标签会将strong标签内的所有元素都用del标签包裹起来
+           $("strong").wrapInner("<del></del>");
+           </script>
+         -->
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>超链接和图片提示效果</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="js/jquery-1.12.1.js"></script>
+    </head>
+    <body>
+        <p><a href="#" class="tooltip" title="这是我的超链接提示1.">提示1</a></p>
+        <p><a href="#" class="tooltip" title="这是我的超链接提示2.">提示2</a></p>
+        <p><a href="#" title="这是自带提示1.">自带提示1.</a></p>
+        <p><a href="#" title="这是自带提示2.">自带提示2.</a></p>
+        <script>
+         $(function(){
+             var x = 5;
+             var y = 5;
+             $("a.tooltip").mouseover(function(e){
+                 //显示title
+                 //创建<div>元素
+                 //alert(e.pageY+"-"+e.pageX);
+                 this.myTitle = this.title;
+                 this.title = "";
+                 var tip = "<div id='tip'>" + this.myTitle + "</div>";
+                 $("body").append(tip);//将它追加到文档中
+                 $("#tip").css({
+                     "position":"absolute",
+                     "top": (e.pageY+y) + "px",
+                     "left": (e.pageX+x) + "px",
+                     "color": "blue"
+                 }).show("fast");  //设置xy坐标并显示
+             }).mouseout(function(){
+                 //隐藏title
+                 this.title = this.myTitle;
+                 $("#tip").remove();//移除
+             }).mousemove(function(e){
+                 $("#tip").css({
+                     "position":"absolute",
+                     "top": (e.pageY+y) + "px",
+                     "left": (e.pageX+x) + "px",
+                     "color": "blue"
+                  });
+             });
+         })
+        </script>
+    </body>
+</html>
