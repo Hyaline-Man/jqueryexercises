@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <style>
+         .content{
+             display:none;
+         }
+         .highlight{
+             background:#ff3300;
+         }
+        </style>
+        <script>
+         $(function(){
+             /*              $(".head").bind("click",function(){ */
+                 /* 下面是点击事件 */
+                 /*                 $(".content").show(100); */
+                 /*                  $(this).next().show(1000); */
+                 /*                  $(this).siblings("div.content").show(1000); */
+
+             /*              }); */
+             /* 下面是光标悬停事件 */
+             /* $("#panel>h5.head").bind("mouseover",function(){
+                $(this).next().show(2000);
+                }).bind("mouseout",function(){
+                $(this).next().hide(2000);
+                }); */
+             /* hover方法：用于模拟光标悬停事件，下面用来改写上面你的方法
+                实际是代替了mouserenter和mouseleave事件，
+                mouseenter：进入元素和其子元素都会触发
+                mouseover：进入元素触发，再进入子元素不再触发
+              */
+             /* $("#panel>h5.head").hover(function(){
+                $(this).next().show(500);
+                },function(){
+                $(this).next().hide(500);
+                }); */
+             /* toggle方法,切换显隐，如果当时是显示的，就隐藏，如果是隐藏的，就显示
+                语法toggle(speeding,easing,callback);
+                speeding:显示/隐藏的速度
+                easing：可选。规定在动画的不同点上元素的速度。默认值为 "swing"。
+                callback:显示/隐藏之后的动作。。。
+              */
+             $("#panel>h5.head").click(function(){
+                 $(this).toggleClass("highlight");
+                 $(this).next().toggle(400,"linear");
+             });
+
+         });
+        </script>
+    </head>
+    <body>
+        <div id="panel">
+            <h5 class="head">什么是jquery?</h5>
+            <div class="content">
+                jquery是继Protorype之后又一个优秀的javascript库，它是一个由John Resig创建于2006年1月的开源项目。Jquery凭借简洁的语法和跨平台的兼容性，极大地简化了Javascript开发人员便利HTML文档、操作DOM、处理事件、执行动画和开发AJAX。它独特而又优雅的代码风格改变了Javascript程序员的设计思路和编写程序的方式。
+            </div>
+            <h5>怎么学习jquery?</h5>
+            <div>.....</div>
+        </div>
+    </body>
+</html>
