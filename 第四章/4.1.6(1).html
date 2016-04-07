@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>事件</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <style>
+         p{
+             background-color:#0fffff;
+         }
+        </style>
+    </head>
+    <body>
+        <script>
+         $(document).ready(function(){
+             //绑定默认事件，自定义事件
+             $("#btn").bind("click",myfun1 = function(){
+                 $("#test").append("<p>我的绑定函数1</p>");
+             }).bind("click",myfun2 = function(){
+                 $("#test").append("<p>我的绑定函数2</p>");
+             }).bind("click",myfun3 = function(){
+                 $("#test").append("<p>我的绑定函数3</p>");
+             });
+             //解绑定
+             $("#delAll").click(function(){
+                 //$("#btn").unbind();//移除所有绑定事件
+                 //$("#btn").unbind("click");//只移除click事件
+                 $("#btn").unbind("click",myfun2);//移除自定义事件myclick
+             });
+             //只触发一次立即解绑定
+             $("#btn").one("mouseenter",function(){
+                 alert("鼠标进入。");
+             });
+         });
+        </script>
+        <button id="btn">单击我</button>
+        <div id="test">123123</div>
+        <button id="delAll">移除所有绑定的事件</button>
+    </body>
+</html>
