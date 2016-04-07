@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <title>模拟操作</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+    </head>
+    <body>
+        <script>
+         $(function(){
+             /* $("#btn").bind("click",function(){
+                alert("点击了");
+                });
+                $("#btn").trigger("click"); */
+             //触发自定义事件
+             $("#btn").bind("myClick",function(){
+                 alert("myClick事件。。。");
+             });
+             $("#btn").trigger("myClick");
+             //自定义事件传递参数
+             $("div").bind("myevent1",function(event,message1,message2){
+                 $("#test").append("<p>"+message1+"-"+message2+"</p>");
+             });
+             $("div").trigger("myevent1",["1","zhangheng"]);
+             //添加事件命名空间
+             $("div").bind("click.plugin",function(event){
+                 $("#test").after("<i>"+event.type+"-click</i>");
+             });
+             $("div").bind("click",function(){
+                 alert("点击事件。。没有命名空间")
+             });
+             $("div").bind("mouseover.plugin",function(event){
+                 $("#test").after("<b>"+event.type+"-mouseover</b>");
+             });
+             $("div").bind("dblclick",function(){
+                 $("body").append("<p>dblckick事件</p>");
+             });
+             $("button").click(function(){
+                 /*                  $("div").unbind(".plugin"); */
+                 //触发没有命名空间的点击事件
+                 $("div").trigger("click!");
+             });
+         });
+        </script>
+        <button id="btn">点击我</button>
+        <div id="test">123</div>
+    </body>
+</html>
