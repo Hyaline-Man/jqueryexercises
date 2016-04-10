@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <style>
+         .panel{
+             position: relative;
+             width: 100px;
+             height: 100px;
+             border: 1px solid #0050D0;
+             background: #96E555;
+             cursor: pointer;
+         }
+        </style>
+    </head>
+    <body>
+        <script>
+         $(document).ready(function(){
+             $(".panel:eq(0)").hover(function(){
+                 $(this).stop()
+                        .animate({height: "300px",width: "300px"}, 2000);
+             }, function(){
+                 $(this).stop()
+                        .animate({height: "50px", width: "50px"}, 2000);
+             });
+             $(".panel:eq(1)").hover(function(){
+                 $(this).stop(true)
+                        .animate({height:"300px"},1000)
+                        .animate({width:"500px"}, 1000);
+             },function(){
+                 $(this).stop(true)
+                        .animate({height:"50px"}, 1000)
+                        .animate({width:"50px"}, 1000);
+             });
+         });
+        </script>
+        <input type="button" id="i1" value="隐藏"/>
+        <div class="panel"></div>
+        <input type="button" id="i2" value="隐藏"/>
+        <div class="panel"></div>
+        <input type="button" id="i3" value="隐藏"/>
+        <div class="panel"></div>
+    </body>
+</html>

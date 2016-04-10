@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <style>
+         .panel{
+             position: relative;
+             width: 100px;
+             height: 100px;
+             border: 1px solid #0050D0;
+             background: #96E555;
+             cursor: pointer;
+         }
+        </style>
+    </head>
+    <body>
+        <script>
+         $(document).ready(function(){
+             /* toggle切换元素的可见状态 */
+             $("#i1").click(function(){
+                 $(this).next("div.panel").toggle();
+             });
+             /* slideToggle通过改变高度改变元素的可见状态 */
+             $("#i2").click(function(){
+                 $(this).next("div.panel").slideToggle();
+             });
+             /* fadeTo,通过调整元素的透明度调整元素的可见性 */
+             $("#i3").click(function(){
+                 $(this).next("div.panel").fadeTo(5000,0.3);
+             });
+         });
+        </script>
+        <input type="button" id="i1" value="隐藏"/>
+        <div class="panel"></div>
+        <input type="button" id="i2" value="隐藏"/>
+        <div class="panel"></div>
+        <input type="button" id="i3" value="隐藏"/>
+        <div class="panel"></div>
+    </body>
+</html>
