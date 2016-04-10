@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src ="../js/jquery-1.12.1.js"></script>
+        <style>
+         .content{
+             display:none;
+         }
+         .highlight{
+             background:#ff3300;
+         }
+        </style>
+    </head>
+    <body>
+        <script>
+         $(function(){
+             $("#panel h5.head").click(function(){
+                 $(this).next().toggle();
+             });
+             /* show()和hide()函数会在高度、宽度、透明度上同时改变 */
+             $("#button1").click(function(){
+                 var $p = $(this).next("p");
+                 $p.toggle(200);
+                 if($p.is(":hidden")){
+                     $(this).html("显示");
+                 }else{
+                     $(this).html("隐藏");
+                 }
+             });
+             /* fadeOut()和fadeIn()只在透明度上增大和减少 */
+             $("#button2").click(function(){
+                 var $p = $(this).next("p");
+                 if($p.is(":hidden")){
+                     $p.fadeIn(2000);
+                     $(this).text("隐藏");
+                 }else{
+                     $p.fadeOut(2000);
+                     $(this).text("显示");
+                 }
+             });
+             /* slideUp()slideDown()只在高度上改变元素，达到隐藏和显示 */
+             $("#button3").click(function(){
+                 var $b3 = $(this);
+                 var $p = $b3.next("p");
+                 if($p.is(":hidden")){
+                     $p.slideDown(1000,function(){
+                         $b3.text("隐藏");
+                     });
+                 }else{
+                     $p.slideUp(1000,function(){
+                         $b3.text("显示");
+                     });
+                 }
+             });
+         });
+        </script>
+        <div id="panel">
+            <h5 class="head">新闻标题</h5>
+            <div class="content">新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容</div>
+        </div>
+        <div>
+            <button type="button" name="toggle" id="button1">隐藏</button>
+            <p>
+                show();hide();<br>
+                show();hide();<br>
+                show();hide();<br>
+                show();hide();<br>
+                show();hide();<br>
+                show();hide();<br>
+            </p>
+        </div>
+        <div>
+            <button type="button" name="toggle" id="button2">隐藏</button>
+            <p>
+                fadeOut();fadeIn();<br>
+                fadeOut();fadeIn();<br>
+                fadeOut();fadeIn();<br>
+                fadeOut();fadeIn();<br>
+            </p>
+        </div>
+        <div>
+            <button type="button" name="toggle" id="button3">隐藏</button>
+            <p>
+                slideUp();slideDown();<br>
+                slideUp();slideDown();<br>
+                slideUp();slideDown();<br>
+                slideUp();slideDown();<br>
+            </p>
+        </div>
+    </body>
+</html>
