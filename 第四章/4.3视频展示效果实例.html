@@ -10,7 +10,8 @@
         <script>
          $(document).ready(function(){
              var page = 1;
-             var i = 4;
+             var pageSize = 4;//每页个数
+             var pageCount = Math.ceil($(".v_content_list ul li").length/pageSize);
              var page_width = $("div.v_content").width();
              //下一页
              $("span.next").click(function(){
@@ -18,7 +19,7 @@
                  //解决多次点击不断跳转问题
                  var $show = $("div.v_content_list");
                  if(!$show.is(":animated"))
-                     if(page < 4){
+                     if(page < pageCount){
                          $show.animate({left:now_left - page_width},"slow");
                          page++;
                      }else{
@@ -36,8 +37,8 @@
                          $show.animate({left:now_left + page_width},"slow");
                          page--;
                      }else{
-                         $show.animate({left:now_left - page_width * 3});
-                         page = 4;
+                         $show.animate({left:now_left - page_width * (pageCount - 1)});
+                         page = pageCount;
                      }
                  $(".highlight_tip>span").removeClass("current").eq(page - 1).addClass("current");
              });
