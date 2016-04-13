@@ -18,13 +18,13 @@
                  //解决多次点击不断跳转问题
                  var $show = $("div.v_content_list");
                  if(!$show.is(":animated"))
-                 if(page < 4){
-                     $show.animate({left:now_left - page_width},"slow");
-                     page++;
-                 }else{
-                     $show.animate({left:"0"},"slow");
-                     page = 1;
-                 }
+                     if(page < 4){
+                         $show.animate({left:now_left - page_width},"slow");
+                         page++;
+                     }else{
+                         $show.animate({left:"0"},"slow");
+                         page = 1;
+                     }
                  $(".highlight_tip>span").removeClass("current").eq(page - 1).addClass("current");
              });
              //上一页
@@ -32,13 +32,13 @@
                  var now_left = page_width * (1 - page);
                  var $show = $("div.v_content_list");
                  if(!$show.is(":animated"))
-                 if(page > 1){
-                     $show.animate({left:now_left + page_width},"slow");
-                     page--;
-                 }else{
-                     $show.animate({left:now_left - page_width * 3});
-                     page = 4;
-                 }
+                     if(page > 1){
+                         $show.animate({left:now_left + page_width},"slow");
+                         page--;
+                     }else{
+                         $show.animate({left:now_left - page_width * 3});
+                         page = 4;
+                     }
                  $(".highlight_tip>span").removeClass("current").eq(page - 1).addClass("current");
              });
              //直接点击某一页
