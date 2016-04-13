@@ -4,29 +4,86 @@
         <title></title>
         <meta charset="utf-8" />
         <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <link href="../css/style1.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <script>
+         $(document).ready(function(){
+             var page = 1;
+             var i = 4;
+             var page_width = $("div.v_content").width();
+             //下一页
+             $("span.next").click(function(){
+                 var now_left = page_width * (1 - page);
+                 //解决多次点击不断跳转问题
+                 var $show = $("div.v_content_list");
+                 if(!$show.is(":animated"))
+                 if(page < 4){
+                     $show.animate({left:now_left - page_width},"slow");
+                     page++;
+                 }else{
+                     $show.animate({left:"0"},"slow");
+                     page = 1;
+                 }
+                 $(".highlight_tip>span").removeClass("current").eq(page - 1).addClass("current");
+             });
+             //上一页
+             $("span.prev").click(function(){
+                 var now_left = page_width * (1 - page);
+                 var $show = $("div.v_content_list");
+                 if(!$show.is(":animated"))
+                 if(page > 1){
+                     $show.animate({left:now_left + page_width},"slow");
+                     page--;
+                 }else{
+                     $show.animate({left:now_left - page_width * 3});
+                     page = 4;
+                 }
+                 $(".highlight_tip>span").removeClass("current").eq(page - 1).addClass("current");
+             });
+             //直接点击某一页
+             $(".highlight_tip>span").click(function(){
+                 $now_span = $(this);
+                 page = $now_span.index() + 1;
+                 $("div.v_content_list").animate({left:page_width * (0 - $now_span.index())});
+                 $(".highlight_tip>span").removeClass("current");
+                 $now_span.addClass("current");
+             });
+         });
+        </script>
         <div class="v_show">
             <div class="v_caption">
                 <!-- 头部标题，按钮等 -->
                 <h2 class="cartoon" title="卡通动漫">卡通动漫</h2>
                 <div class="highlight_tip">
                     <span class="current">1</span><span>2</span><span>3</span><span>4</span>
-                    <div class="change_btn">
-                        <span class="prev">上一页</span>
-                        <span class="next">下一页</span>
-                    </div>
-                    <em><a href="#">更多</a></em>
                 </div>
+                <div class="change_btn">
+                    <span class="prev">上一页</span>
+                    <span class="next">下一页</span>
+                </div>
+                <em><a href="#">更多</a></em>
             </div>
             <div class="v_content">
                 <!-- 视频展示的区域 -->
                 <div class="v_content_list">
                     <ul>
-                        <li>
-                            <a href="#"><img src="img/01.jpg" alt="海贼王"/></a>
-                            <h4><a href="#">海贼王</a></h4>
-                        </li>
+                        <li><a href="#"><img src="../images/01.jpg" alt="海贼王" /></a><h4><a href="#">海贼王</a></h4><span>播放:<em>28,276</em></span></li>
+				                <li><a href="#"><img src="../images/01.jpg" alt="海贼王" /></a><h4><a href="#">海贼王</a></h4><span>播放:<em>28,276</em></span></li>
+				                <li><a href="#"><img src="../images/01.jpg" alt="海贼王" /></a><h4><a href="#">海贼王</a></h4><span>播放:<em>28,276</em></span></li>
+				                <li><a href="#"><img src="../images/01.jpg" alt="海贼王" /></a><h4><a href="#">海贼王</a></h4><span>播放:<em>28,276</em></span></li>
+				                <li><a href="#"><img src="../images/02.jpg" alt="哆啦A梦" /></a><h4><a href="#">哆啦A梦</a></h4><span>播放:<em>33,326</em></span></li>
+				                <li><a href="#"><img src="../images/02.jpg" alt="哆啦A梦" /></a><h4><a href="#">哆啦A梦</a></h4><span>播放:<em>33,326</em></span></li>
+				                <li><a href="#"><img src="../images/02.jpg" alt="哆啦A梦" /></a><h4><a href="#">哆啦A梦</a></h4><span>播放:<em>33,326</em></span></li>
+				                <li><a href="#"><img src="../images/02.jpg" alt="哆啦A梦" /></a><h4><a href="#">哆啦A梦</a></h4><span>播放:<em>33,326</em></span></li>
+				                <li><a href="#"><img src="../images/03.jpg" alt="火影忍者" /></a><h4><a href="#">火影忍者</a></h4><span>播放:<em>28,276</em></span></li>
+				                <li><a href="#"><img src="../images/03.jpg" alt="火影忍者" /></a><h4><a href="#">火影忍者</a></h4><span>播放:<em>28,276</em></span></li>
+				                <li><a href="#"><img src="../images/03.jpg" alt="火影忍者" /></a><h4><a href="#">火影忍者</a></h4><span>播放:<em>28,276</em></span></li>
+				                <li><a href="#"><img src="../images/03.jpg" alt="火影忍者" /></a><h4><a href="#">火影忍者</a></h4><span>播放:<em>28,276</em></span></li>
+				                <li><a href="#"><img src="../images/04.jpg" alt="龙珠" /></a><h4><a href="#">龙珠</a></h4><span>播放 <em>57,865</em></span></li>
+				                <li><a href="#"><img src="../images/04.jpg" alt="龙珠" /></a><h4><a href="#">龙珠</a></h4><span>播放 <em>57,865</em></span></li>
+				                <li><a href="#"><img src="../images/04.jpg" alt="龙珠" /></a><h4><a href="#">龙珠</a></h4><span>播放 <em>57,865</em></span></li>
+				                <li><a href="#"><img src="../images/04.jpg" alt="龙珠" /></a><h4><a href="#">龙珠</a></h4><span>播放 <em>57,865</em></span></li>
                     </ul>
                 </div>
             </div>
