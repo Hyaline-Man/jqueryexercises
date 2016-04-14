@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <title>滚动条高度变化</title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <style>
+         .focus{
+             border: 1px solid #f00;
+             background: #fcc;
+         }
+        </style>
+    </head>
+    <body>
+        <script>
+         $(function(){
+             var $comment = $("#comment");
+             $(".up").click(function(){
+                 if(!$comment.is(":animated")){
+                     $comment.animate({"scrollTop":"-=50"}, 400);
+                 }
+             });
+             $(".down").click(function(){
+                 if(!$comment.is(":animated")){
+                     $comment.animate({"scrollTop":"+=50"},400);
+                 }
+             });
+
+         })
+        </script>
+        <form>
+            <div class="msg">
+                <div class="msg_caption">
+                    <span class="up">向上</span>
+                    <span class="down">向下</span>
+                </div>
+                <div>
+                    <textarea id="comment" rows="8" clos="20">
+                        多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,
+                        多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,
+                        多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,
+                        多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,多行文本框高度变化,
+                    </textarea>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

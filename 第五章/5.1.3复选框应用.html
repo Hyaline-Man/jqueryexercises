@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <title>复选框应用</title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+    </head>
+    <body>
+        <script>
+         $(function(){
+             $("#CheckedAll").click(function(){
+                 /*
+                    1.6.1(含)以下的可以用attr，以上的需要用prop代替了
+                    1.6.1以上的attr只能处理我们自己定义的属性，prop只能处理dom元素本身就存在的属性。
+                  */
+                 //$(":checkbox").attr("checked",true);
+                 $(":checkbox").prop("checked",true);
+             });
+             $("#CheckedNo").click(function(){
+                 $(":checkbox").attr("checked",false);
+             });
+             $("#CheckedRev").click(function(){
+                 /* each函数，所有选中的元素都进行处理 */
+                 $(":checkbox").each(function(){
+                     /*                      $(":checkbox").attr("checked",!$(this).attr("checked")); */
+                     this.checked = !this.checked;
+                 });
+             });
+             $("#send").click(function(){
+                 var str = "你选中的是：\r\n";
+                 $("[name=items]:checkbox:checked").each(function(){
+                     str += $(this).val()+"\r\n";
+                 });
+                 alert(str);
+             });
+         })
+        </script>
+        <form id="myForm">
+            你爱好的运动是？<br/>
+            <label><input type="checkbox" name="items" value="足球">足球</label>
+            <label><input type="checkbox" name="items" value="篮球">篮球</label>
+            <label><input type="checkbox" name="items" value="羽毛球">羽毛球</label>
+            <label><input type="checkbox" name="items" value="乒乓球">乒乓球</label>
+            <br/>
+            <input type="button" id="CheckedAll" value="全 选"/>
+            <input type="button" id="CheckedNo" value="全不选"/>
+            <input type="button" id="CheckedRev" value="反 选"/>
+            <input type="submit" id="send" value="提交" />
+        </form>
+    </body>
+</html>
