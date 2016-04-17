@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <title>复选框应用</title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+    </head>
+    <body>
+        <script>
+         $(function(){
+             //点击复选框实现全选和反选复选框组
+             $("#checkAll").click(function(){
+                 if($(this).is(":checked"))/* jquery的方式 */
+                     /*                  if(this.checked)   // js的方式  */
+                     $("[name=items]").prop("checked",true);
+                 else
+                     $("[name=items]").prop("checked",false)
+
+                  /* 简写 */
+                     /*                   $("[name=items]").prop("checked",this.checked); */
+             });
+             //点击复选框组后，根据是否全部被选中自动选择全选和反选复选框
+             //三种写法
+             $("[name=items]:checkbox").click(function(){
+                 var checkboxs = $("[name=items]:checkbox");
+                 var flag = true;
+                 //循环遍历
+                 /* for(var i = 0; i < checkboxs.length; i++){
+                    if(!checkboxs[i].checked) flag = false;
+                    } */
+                 //可以用each函数遍历
+                 /* $("[name=items]:checkbox").each(function(){
+                    if(!this.checked) flag = false;
+                    });
+                    $("#checkAll").prop("checked", flag); */
+
+                 //根据复选框个数和选中的复选框个数对比判断
+                var checkedLen = $("[name=items]:checkbox:checked").length;
+                var checkboxLen = $("[name=items]:checkbox").length;
+                $("#checkAll").prop("checked",checkedLen==checkboxLen);
+              });
+             $("#send").click(function(){
+                 var str = "你选中的是：\r\n";
+                 $("[name=items]:checkbox:checked").each(function(){
+                     str += $(this).val()+"\r\n";
+                 });
+                 alert(str);
+             });
+         })
+        </script>
+        <form id="myForm">
+            你爱好的运动是？<label><input type="checkbox" id="checkAll" value="全选/全不选">全选/全不选</label><br/>
+            <label><input type="checkbox" name="items" value="足球">足球</label>
+            <label><input type="checkbox" name="items" value="篮球">篮球</label>
+            <label><input type="checkbox" name="items" value="羽毛球">羽毛球</label>
+            <label><input type="checkbox" name="items" value="乒乓球">乒乓球</label>
+            <br/>
+            <input type="submit" id="send" value="提交" />
+        </form>
+    </body>
+</html>
