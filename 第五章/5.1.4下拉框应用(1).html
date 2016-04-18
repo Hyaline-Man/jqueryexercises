@@ -11,10 +11,10 @@
              text-align: center;
              margin: 10px;
          }
-         span { 
-	           display:block; 
+         span {
+	           display:block;
 	           margin:2px 2px;
-	           padding:4px 10px; 
+	           padding:4px 10px;
 	           background:#898989;
 	           cursor:pointer;
 	           font-size:12px;
@@ -23,6 +23,38 @@
         </style>
     </head>
     <body>
+        <script>
+         $(function(){
+             //右移
+             $("#add").click(function(){
+                 $("#select1>option:selected").each(function(){
+                     $(this).remove().appendTo("#select2");
+                 });
+             });
+             $("#add_all").click(function(){
+                 $("#select1>option").each(function(){
+                     $(this).remove().appendTo("#select2");
+                 });
+             });
+             $("#select1").dblclick(function(){
+                 $(this).remove().appendTo("#select2");
+             });
+             //左移
+             $("#remove").click(function(){
+                 $("#select2>option:selected").each(function(){
+                     $(this).remove().appendTo("#select1");
+                 });
+             });
+             $("#remove_all").click(function(){
+                 $("#select2>option").each(function(){
+                     $(this).remove().appendTo("#select1");
+                 });
+             });
+             $("#select2").dblclick(function(){
+                 $(this).remove().appendTo("#select1");
+             });
+         });
+        </script>
         <div class="centent">
             <select multiple id="select1" style="width:100px;height:160px;">
                 <option value="1">选项1</option>
@@ -44,7 +76,7 @@
             </select>
             <div>
                 <span id="remove">&lt;&lt;选中删除到左边</span>
-                <span id="remove">&lt;&lt;全部删除到左边</span>
+                <span id="remove_all">&lt;&lt;全部删除到左边</span>
             </div>
         </div>
     </body>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>表单验证</title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <script>
+         $(function(){
+             //必填项后面加提示图标
+             var star = "<strong class='high'>*<strong>";
+             $("#username,#email").each(function(){
+                 var $parent = $(this).parent("div");
+                 $parent.append($(star));
+             });
+         });
+        </script>
+        <form method="post" action="">
+            <div class="int">
+                <label for="username">用户名:</label>
+                <input type="text" id="username" class="required" />
+            </div>
+            <div class="int">
+                <label for="email">邮箱:</label>
+                <input type="text" id="email" class="required"/>
+            </div>
+            <div class="int">
+                <label for="personinfo">个人资料:</label>
+                <input type="text" id="personinfo" />
+            </div>
+            <div class="sub">
+                <input type="submit" value="提交" id="send"/><input type="reset" id="res"/>
+            </div>
+        </form>
+    </body>
+</html>
