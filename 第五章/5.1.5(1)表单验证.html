@@ -15,6 +15,49 @@
                  var $parent = $(this).parent("div");
                  $parent.append($(star));
              });
+             $("form :input").blur(function(){
+                 var $parent = $(this).parent("div");
+                 if($(this).attr("id") == "username"){
+                     //清除之前的标记
+                     $parent.children(".formtips").remove();
+                     var username = $(this).val();
+                     if(username.length < 6){
+                         $parent.append("<span class='formtips onError'>请输入至少六位用户名</span>");
+                     }else{
+                         $parent.append("<span class='formtips onSuccess'></span>");
+                     }
+                 }else if($(this).attr("id") == "email"){
+                     $parent.children(".formtips").remove();
+                     //验证邮箱的正则
+                     var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                     if(myreg.test($(this).val())){
+                         $parent.append("<span class='formtips onSuccess'></span>");
+                     }else{
+                         $parent.append("<sapn class='formtips onError'>邮箱格式错误</span>");
+                     }
+                 }
+             }).keyup(function(){
+                 $(this).triggerHandler("blur");
+             }).focus(function(){
+                 $(this).triggerHandler("blur");
+             });
+             //对用户的提交操作进行验证
+             //看后面忘前面的了。trigger又复习了一下。。。
+             $("#send").click(function(){
+                 $("form :input").trigger("blur");
+                 //判断错误标记的个数判断是否允许提交
+                 var numError = $("form .onError").length;
+                 if(numError){
+                     return false;
+                 }
+                 alert("注册成功！");
+             });
+             //change事件在元素失去焦点时，如果前后的值相等，就触发，不相等不触发
+             //这里用change事件达不到实时的效果
+             $("#username").change(function(){
+                 $(this).triggerHandler("blur");
+             });
+
          });
         </script>
         <form method="post" action="">
