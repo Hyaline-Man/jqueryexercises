@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style-table.css">
+    </head>
+    <body>
+        <script>
+         $(function(){
+             $("tbody>tr:odd").addClass("odd");
+             $("tbody>tr:even").addClass("even");
+             $("tbody>tr:contains('王武')").addClass("selected");
+             $("tbody>tr").click(function(){
+                 //我自己的写法
+                 /*                  $("tbody>tr").removeClass("selected"); */
+                 /*                  $(this).addClass("selected"); */
+                 //书上的写法
+                 //end查了一下表示将匹配的元素列表变为最近一次的状态
+                 //参照下面的例子即，最开始选择的是当前点击的this,之后调用siblings后选择元素变成其兄弟元素了
+                 //调用end之后选择的元素就又变回this了
+                 $(this).addClass("selected").siblings()
+                                                  .removeClass("selected").end();
+                 $(this).find(":radio").prop("checked",true).end().siblings().find(":radio").prop("checked",false);
+             });
+         })
+        </script>
+        <table>
+            <thead>
+                <tr><th></th><th>姓名</th><th>性别</th><th>暂住地</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><input type="radio" name="1"/></td><td>张山</td><td>男</td><td>浙江宁波</td></tr>
+                <tr><td><input type="radio" name="2"/></td><td>李四</td><td>女</td><td>浙江杭州</td></tr>
+                <tr><td><input type="radio" name="3"/></td><td>王武</td><td>男</td><td>湖南长沙</td></tr>
+                <tr><td><input type="radio" name="4"/></td><td>赵六</td><td>男</td><td>浙江温州</td></tr>
+                <tr><td><input type="radio" name="5"/></td><td>Rain</td><td>女</td><td>浙江宁波</td></tr>
+                <tr><td><input type="radio" name="6"/></td><td>MAXMAN</td><td>男</td><td>河南焦作</td></tr>
+            </tbody>
+        </table>
+    </body>
+</html>
