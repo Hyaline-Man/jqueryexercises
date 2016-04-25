@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <style>
+         #para{
+             font-size:20px;
+             color:blue;
+         }
+         .bigger,.smaller{
+             font-size:20px;
+             background-color:black;
+             color:white;
+         }
+        </style>
+    </head>
+    <body>
+        <script>
+         $(function(){
+             $("span").click(function(){
+                 /*
+                  * 下面是我写的方法，用了动画animate
+                  *  问题:动画会抖动。。。不知道
+                  */
+                 if($(this).text() == "放大"){
+                     $("#para").animate({"font-size":"+=4px"},"fast");
+                 }else{
+                     $("#para").animate({"font-size":"-=4px"},"fast");
+                 }
+                 /* 下面是书上的，用了css方法,还有slice,parseFloat方法 */
+                 /* var thisEle = $("#para").css("font-size");
+                    var textFontSize = parseFloat(thisEle, 10);
+                    var unit = thisEle.slice(-2);
+                    var cName = $(this).attr("class");
+                    if(cName == "bigger"){
+                    textFontSize += 2;
+                    }else{
+                    textFontSize -= 2;
+                    }
+                    $("#para").css("font-size",textFontSize + unit); */
+             });
+         })
+        </script>
+        <div class="msg">
+            <div class="msg_caption">
+                <span class="bigger">放大</span>
+                <span class="smaller">缩小</span>
+            </div>
+            <div>
+                <p id="para">
+                    This is some text,This is some text,This is some text,This is some text,This is some text,<br/>
+                    This is some text,This is some text,This is some text,This is some text,This is some text,<br/>
+                    This is some text,This is some text,This is some text,This is some text,This is some text,<br/>
+                    This is some text,This is some text,This is some text,This is some text,This is some text,<br/>
+                    This is some text,This is some text,This is some text,This is some text,This is some text,<br/>
+                    This is some text,This is some text,This is some text,This is some text,This is some text,<br/>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
