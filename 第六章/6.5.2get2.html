@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ajax get方法</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <style>
+         * { margin:0; padding:0;}
+         body { font-size:12px;}
+         .comment { margin-top:10px; padding:10px; border:1px solid #ccc;background:#DDD;}
+         .comment h6 { font-weight:700; font-size:14px;}
+         .para { margin-top:5px; text-indent:2em;background:#DDD;}
+        </style>
+    </head>
+    <body>
+        <form id="form1" action="#">
+            <p>评论:</p>
+            <p>姓名:<input type="text" name="username" id="username"/></p>
+            <p>内容:<textarea name="content" id="content" rows="2" clos="20"></textarea></p>
+            <p><input type="button" id="send" value="提交"/></p>
+        </form>
+        <div class="comment">已有评论:</div>
+        <div id="resText"></div>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script>
+         $(function(){
+             $("#send").click(function(){
+                 //请求的这个页面是从作者源码中抄来的，不过本地运行报错，说声明不在第一行
+                 //于是把jsp设置编码的头去掉了，中文会有乱码，不过数据可以请求过来了。。。
+                 $.get("http://localhost:8080/get2.jsp",{
+                     username: $("#username").val(),
+                     content : $("#content").val()
+                 },function(data, textStatus){
+                     //对返回的xml文档进行处理
+                     var username = $(data).find("comment").attr("username");
+                     var content = $(data).find("comment content").text();
+                     var txtHtml = "<div class='comment'><h6>"
+                                  +username+":</h6><p class='para'>"
+                                  +content+"</p></div>";
+                     $("#resText").html(txtHtml);
+                 });
+             });
+         })
+        </script>
+    </body>
+</html>

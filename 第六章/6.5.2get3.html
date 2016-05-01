@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ajax get方法</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <style>
+         * { margin:0; padding:0;}
+         body { font-size:12px;}
+         .comment { margin-top:10px; padding:10px; border:1px solid #ccc;background:#DDD;}
+         .comment h6 { font-weight:700; font-size:14px;}
+         .para { margin-top:5px; text-indent:2em;background:#DDD;}
+        </style>
+    </head>
+    <body>
+        <form id="form1" action="#">
+            <p>评论:</p>
+            <p>姓名:<input type="text" name="username" id="username"/></p>
+            <p>内容:<textarea name="content" id="content" rows="2" clos="20"></textarea></p>
+            <p><input type="button" id="send" value="提交"/></p>
+        </form>
+        <div class="comment">已有评论:</div>
+        <div id="resText"></div>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script>
+         $(function(){
+             $("#send").click(function(){
+                 //这里的get3.jsp也是从作者那里抄过来的，不过里面的json需要把所有的单引号改成双引号才能正常转json，
+                 //书上的直接获取json的貌似没有作用，将最后一个参数去掉，然后自己转换成功了
+                 $.get("http://localhost:8080/get3.jsp",{
+                     username: $("#username").val(),
+                     content : $("#content").val()
+                 },function(data, textStatus){
+                     var obj = JSON.parse(date);
+                     var username = obj.username;
+                     var content = obj.content;
+                     var txtHtml = "<div class='comment'><h6>"
+                                  +username+":</h6><p class='para'>"
+                                  +content+"</p></div>";
+                     $("#resText").html(txtHtml);
+                 });
+             });
+         })
+        </script>
+    </body>
+</html>

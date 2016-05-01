@@ -20,5 +20,19 @@
         </form>
         <div class="comment">已有评论:</div>
         <div id="resText"></div>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script>
+         $(function(){
+             $("#send").click(function(){
+                 $.get("http://localhost:8080/get1.jsp",{
+                     username: $("#username").val(),
+                     content : $("#content").val()
+                 },function(data, textStatus){
+                     alert(textStatus);//请求状态
+                     $("#resText").html(data);//将返回的数据放到页面上
+                 });
+             });
+         })
+        </script>
     </body>
 </html>
