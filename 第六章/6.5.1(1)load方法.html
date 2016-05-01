@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ajax load方法</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <style>
+         * { margin:0; padding:0;}
+         body { font-size:12px;}
+         .comment { margin-top:10px; padding:10px; border:1px solid #ccc;background:#DDD;}
+         .comment h6 { font-weight:700; font-size:14px;}
+         .para { margin-top:5px; text-indent:2em;background:#DDD;}
+        </style>
+    </head>
+    <body>
+        <input type="button" id="send" value="Ajax获取"/>
+        <div class="comment">已有评论：</div>
+        <div id="resText"></div>
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <script>
+         //！！！例子里都没有传递参数，使用的是get请求，如果有参数的话，会自动转换为post请求！！！
+         $(function(){
+             $("#send").click(function(){
+                 //下面注释的会加载整个页面
+                 /*                  $("#resText").load("test.html");*/
+                 //下面带选择器的只会加载选中的元素
+                 /*                  $("#resText").load("test.html .para");*/
+                 //回调参数，只要请求完成，不论是否请求成功，都会出发回调函数
+                 $("#resText").load("test.html",function(responText,textStatus,XMLHttpRequest){
+                     //responText 返回值
+                     //textStatus 请求返回的内容:success、error、notmodified、timeout
+                     //XMLHttpRequest
+                     alert(responText);
+                     alert(textStatus);
+                 });
+             });
+         })
+        </script>
+    </body>
+</html>
