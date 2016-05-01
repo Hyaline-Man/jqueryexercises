@@ -26,18 +26,21 @@
              $("#send").click(function(){
                  //这里的get3.jsp也是从作者那里抄过来的，不过里面的json需要把所有的单引号改成双引号才能正常转json，
                  //书上的直接获取json的貌似没有作用，将最后一个参数去掉，然后自己转换成功了
+                 //
+                 //又试了一下，如果加上json的话，当返回内容格式正确的时候回自动转换成json对象的
                  $.get("http://localhost:8080/get3.jsp",{
                      username: $("#username").val(),
                      content : $("#content").val()
                  },function(data, textStatus){
-                     var obj = JSON.parse(date);
-                     var username = obj.username;
-                     var content = obj.content;
+                     //如果加上参数json，就不用下面自己转换了
+                     /*                      var obj = JSON.parse(date); */
+                     var username = data.username;
+                     var content = data.content;
                      var txtHtml = "<div class='comment'><h6>"
                                   +username+":</h6><p class='para'>"
                                   +content+"</p></div>";
                      $("#resText").html(txtHtml);
-                 });
+                 },"json");
              });
          })
         </script>
