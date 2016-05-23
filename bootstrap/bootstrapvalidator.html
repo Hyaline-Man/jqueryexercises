@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <title>bootstrapvalidator</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/bootstrapValidator.css"/>
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrapValidator.js"></script>
+    </head>
+    <body>
+        <script>
+         $(document).ready(function(){
+             $("form").bootstrapValidator();
+         })
+        </script>
+        <form>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" />
+            </div>
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="text" class="form-control" name="email" />
+            </div>
+        </form>
+    </body>
+</html>
