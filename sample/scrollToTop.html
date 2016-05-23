@@ -9,8 +9,10 @@
         <script>
          $(document).ready(function(){
              $("a[href='#top']").click(function(){
-                 $("html, body").animate({scrollTop : 0}, "slow");
-                 return false;
+				var top = $(window).scrollTop();
+				alert(top);
+                $("html, body").animate({'top' : top}, "slow");
+                return false;
              });
          });
         </script>

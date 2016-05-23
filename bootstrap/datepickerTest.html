@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <title>bootstrap-datepicker</title>
+        <meta http-equiv="content-type" charset="utf-8">
+        <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+        <script src="../js/jquery-1.12.1.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <form>
+            <input id="txtDtbegin" name="dtBegin" value="" type='text' class="form-control"/>
+        </form>
+        <script>
+         $('#txtDtbegin').datetimepicker({
+             format: 'yyyy-mm-dd hh:ii:ss',
+             language: 'zh-CN',
+             pickDate: true,
+             pickTime: true,
+             inputMask: true,
+             pickerPosition: "bottom-left",
+             autoclose: true
+         });
+        </script>
+    </body>
+</html>
