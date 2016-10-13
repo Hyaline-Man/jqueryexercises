@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.12.1.js"></script>
+    </head>
+    <body>
+        <input type="button" value="click2" onclick="clickbutton()" />
+        <button value="click1" onclick ="clickbutton()">123</button>
+        <script>
+         function clickbutton() {
+             console.log("123");
+             $.ajax({
+                 "url" : "http://localhost:9005/crawlpoint/list",
+                 "type" : "GET",
+                 "dataType" : "json",
+                 "success" : function(data) {
+                     console.log(data.reqStatus);
+                 },
+                 "error" : function(status, t) {
+                     console.log(status);
+                 }
+             });
+         };
+        </script>
+    </body>
+</html>
